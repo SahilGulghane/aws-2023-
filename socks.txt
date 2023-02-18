@@ -1,0 +1,31 @@
+socks proxy is basically proxy server between cilent and actual server where cilent and proxy server is connected via ssh protocol 
+forming tunnel the tunnel is very secure stack of encryption there are the types of socks (version)
+
+1 socks-4 support only udp protocol
+2 socks-4a
+3 socks-5 support both udp and tcp protocol 
+
+_____The main difference between vpn and socks is that there is no secure tunnel between proxy server and cilent one can contact to vpn  service to reveal 
+ip address 
+
+
+what is tcp protocol -> Transmission control protocol it gives gurantee between reciver and sender nolosss of data will they have three steps of handshake 
+1 syn 
+2 syn and ack
+3 ack 
+
+what is udp protocol -> user datagram protocol it does not give gurantee to recive 100% data 
+
+
+how to setup socks proxy through aws
+
+1 launch server in cloud in differnet region in my case California ec2 service  
+
+2. ssh -i key username@ip address -N -D port no 
+ssh -i cali.pem  ec2-user@13.52.212.17 -N -D 9080
+
+3. setup browser 
+ 
+"loc of broswer .exe file " --user-data-dir="%USERPROFILE%\proxy-profile" --proxy-server="socksversion://localhost:port no"
+ex.chrome browser  
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="%USERPROFILE%\proxy-profile" --proxy-server="socks5://localhost:9080"
